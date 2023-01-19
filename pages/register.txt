@@ -1,11 +1,10 @@
 import styles from '../styles/Register.module.css'
 import Image from 'next/image'
 import React from 'react'
-import * as ReactDOM from 'react-dom'
 import { useRef } from 'react'
 
 export default function Register({fajok}) {
-    const myRef = useRef(null);
+    const myRef = useRef();
     return (
     <>
         <form id="form">
@@ -40,8 +39,8 @@ export default function Register({fajok}) {
             </select>
             <div className={styles.fajkep}>
                 {/* fajok képeit mutatja kattintásra a listából */}
-                {fajok.map((kep:any,i:number) => {
-                    if (myRef.current.getElementsByTagName("option")[i].value === kep[i].caption) {
+                {fajok.map((kep,i) => {
+                    if (document.getElementsByTagName("option")[i].value === kep[i].caption) {
                     <Image 
                         key={kep[i]._id} 
                         src={kep[i].url} 
