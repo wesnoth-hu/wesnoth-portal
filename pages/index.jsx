@@ -140,8 +140,8 @@ export async function getStaticProps() {
   
   return {
     props: {
-      statical:[],
-      logo:[],
+      statical,
+      logo,
       fajok
     }
   }
