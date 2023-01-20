@@ -124,8 +124,8 @@ export async function getStaticProps() {
   let res = await req.json();
   let statical = res.result;
 
-  {/*logo-hu */}
-  const req1 = await fetch('https://x23r8kwf.api.sanity.io/v2021-10-21/data/query/development?query=*%5B_type%20%3D%3D%20%22logo%22%20%26%26%20caption%20%3D%3D%20%22logo-hu%22%5D%7B%22url%22%3Aupload.asset-%3Eurl%7D');
+  {/*wesnoth-logo */}
+  const req1 = await fetch('https://x23r8kwf.api.sanity.io/v2021-10-21/data/query/development?query=*%5B_type%20%3D%3D%20%22logo%22%20%26%26%20caption%20%3D%3D%20%22logo%20hu%22%5D%7B%22url%22%3Aupload.asset-%3Eurl%7D');
   let res1 = await req1.json();
   let logo = res1.result[0]["url"];
 
