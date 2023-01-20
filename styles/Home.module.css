@@ -1,25 +1,35 @@
-.main {
+.center {
+  /* margin: 50px auto; */
   height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.center {
-  margin: 50px auto;
+.logo {
+  margin: 0px auto 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.list {
+  margin: 0px auto 0px auto;
+  width: 880px;
+}
+
 .listUl {
   margin: 50px auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: row nowrap;
   justify-content: center;
-  padding-left: 0px;
-  list-style-type: none;
+  
 }
 
 .listLi {
   margin: 0px 30px;
+  padding-left: 0px;
+  list-style-type: none;
 }
 
 .listA {
