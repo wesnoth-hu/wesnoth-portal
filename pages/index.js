@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 //import Register from './register'
 
 
-export default function App({statical,logo,fajok}) {
+export default function App({statical,logo}) {
   return (
       <>
       <Head>

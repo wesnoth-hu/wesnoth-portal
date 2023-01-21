@@ -51,14 +51,14 @@ export const structure : StructureResolver = (S) =>
                   .defaultOrdering([{field: "caption", direction: 'asc'}])
                 ),
                 S.listItem()
-                .title('Wesnoth Fajok')
+                .title('Fajok')
                 .schemaType('document')
                 .child(
                   S.documentTypeList('races')
                   .defaultOrdering([{field: "caption", direction: 'asc'}])
                 )
-            ])
-        ),
+            ]) //end of items[]
+        ), //end of child
       S.listItem()
         .title('Cikkek')
         .schemaType('document')

@@ -1,9 +1,11 @@
 .register {
     margin: auto;
-    width: 150px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: 1px double black;
+    padding: 10px;
 }
 
 .dist {
@@ -11,12 +13,19 @@
 }
 
 .fajkep {
+    margin: auto;
+    margin-top: 10px;
     display: flex;
-    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
-    width: 97px;
-    height: 125px;
+    width: 72px;
+    height: 72px;
     border: 1px solid black;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 10px;
 }
