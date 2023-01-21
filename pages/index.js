@@ -1,20 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-// import Register from './register'
-//import {client} from '../client'
-//import imageUrlBuilder from '@sanity/image-url'
+//import Register from './register'
 
 
-export default function Home({statical,logo}) {
+export default function App({statical,logo,fajok}) {
   return (
-    <>
+      <>
       <Head>
         <title>Magyar Wesnoth Közösségi Portál</title>
         <meta name="description" content="Magyar Wesnoth Közösségi Portál" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
         <div className={styles.center}>
             <div className={styles.logo}>
               <Image
@@ -36,7 +35,6 @@ export default function Home({statical,logo}) {
                       rel="noopener noreferrer"
                     >
                       <Image 
-                      //image-2a892a3152b1cd63bd0a93c3e282265ebb52698e-640x512-svg
                         src={statical[0]["url"]}
                         alt='Discord Logo'
                         className={styles.listS}
@@ -55,7 +53,6 @@ export default function Home({statical,logo}) {
                       rel="noopener noreferrer"
                     >
                       <Image 
-                      //image-800101dee7c2895ac4dce31731ec5617db6fe65a-512x512-svg
                         src={statical[1]["url"]}
                         alt='Facebook Logo'
                         className={styles.listS}
@@ -74,7 +71,6 @@ export default function Home({statical,logo}) {
                       rel="noopener noreferrer"
                     >
                       <Image 
-                      //image-5070289d9090cee58d1b601c11f0ec1454f86477-512x512-svg
                         src={statical[2]["url"]}
                         alt='Itch.io Logo'
                         className={styles.listS}
@@ -93,7 +89,6 @@ export default function Home({statical,logo}) {
                       rel="noopener noreferrer"
                     >
                       <Image
-                      //image-446d8fba5c562ec2537df9029d254cf3bd4df688-496x512-svg
                         src={statical[3]["url"]}
                         alt='Steam Logo'
                         className={styles.listS}
@@ -107,16 +102,12 @@ export default function Home({statical,logo}) {
                 </ul>
               </div>
         </div>
-    </>
+        {/* <Register /> */}
+      </>
   )
 }
 
 
-// const builder = imageUrlBuilder(client)
-
-// function urlFor(source:string) {
-//   return builder.image(source)
-// }
 
 export async function getStaticProps() {
   {/*statikus ikonok */}
@@ -136,13 +127,11 @@ export async function getStaticProps() {
 
   // console.log(statical);
   // console.log(logo);
-  // console.log(fajok);
-  
+ 
   return {
     props: {
       statical,
       logo,
-      //fajok
     }
   }
 }
