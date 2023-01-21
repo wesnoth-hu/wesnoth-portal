@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-//import Register from './register'
+// import Register from './register'
 
 
 export default function App({statical,logo}) {
@@ -115,15 +115,10 @@ export async function getStaticProps() {
   let res = await req.json();
   let statical = res.result;
 
-  {/*wesnoth-logo */}
+  {/*logo-hu */}
   const req1 = await fetch('https://x23r8kwf.api.sanity.io/v2021-10-21/data/query/development?query=*%5B_type%20%3D%3D%20%22logo%22%20%26%26%20caption%20%3D%3D%20%22logo-hu%22%5D%7B%22url%22%3Aupload.asset-%3Eurl%7D');
   let res1 = await req1.json();
   let logo = res1.result[0]["url"];
-
-  // {/*faj ikonok */}
-  // const req2 = await fetch('https://x23r8kwf.api.sanity.io/v2021-10-21/data/query/development?query=*%5B_type%20%3D%3D%20%22races%22%5D%20%7C%20order(caption%20asc)%7B_id%2Ccaption%2C%22url%22%3Aupload.asset-%3Eurl%7D');
-  // let res2 = await req2.json();
-  // let fajok = res2.result;
 
   // console.log(statical);
   // console.log(logo);
