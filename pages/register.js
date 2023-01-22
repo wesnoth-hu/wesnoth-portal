@@ -23,37 +23,38 @@ export default function Register() {
             setErrorUserMsg('')
         } else {
             setErrorUserMsg('A felhasználónév nem lehet üres, 3-16 karakter közti hosszúságú kell legyen és csak betűket meg számokat tartalmazhat.')
+            setToggleRegBtn(true)
         }
     }
 
     const validateEmail = (value) => {
         if (validator.isEmail(value, {
-            allow_display_name: false, require_display_name: false, allow_utf8_local_part: true, 
+            allow_display_name: true, require_display_name: false, allow_utf8_local_part: true, 
             require_tld: true, allow_ip_domain: false, domain_specific_validation: false, 
             blacklisted_chars: '', host_blacklist: []
         })) {
             setErrorEmailMsg('')
         } else {
             setErrorEmailMsg('A megadott email-cím formátuma nem megfelelő.')
+            setToggleRegBtn(true)
         }
     }
 
     const validatePass = (value) => {
-        if (validator.isStrongPassword(value, {
+        if (!validator.isEmpty(value) && validator.isStrongPassword(value, {
             minLength: 8, minLowercase: 1,
             minUppercase: 1, minNumbers: 1, minSymbols: 1
         }) && validator.isLength(value, {
             min: 8, max: 16,
         })) {
             setErrorPassMsg('')
-            Toggle()
+            if (validateUser && validateEmail) {
+                setToggleRegBtn(false)
+            }
         } else {
             setErrorPassMsg('A jelszó 8-16 karakter közti hosszúságú kell legyen, minimum egy kicsi és egy nagy betűt, egy számot és szimbólumot kell tartalmaznia.')
+            setToggleRegBtn(true)
         }
-    }
-
-    function Toggle() {
-        setToggleRegBtn(false)
     }
 
     function FajDisplay() { 
