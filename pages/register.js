@@ -11,6 +11,8 @@ export default function Register() {
     const [errorEmailMsg, setErrorEmailMsg] = useState('');
     // password validator
     const [errorPassMsg, setErrorPassMsg] = useState('');
+    // submit button enable/disable
+    const [toggleRegBtn, setToggleRegBtn] = useState(true);
     // dropdown list
     const [value, setValue] = useState('bat');
 
@@ -38,15 +40,20 @@ export default function Register() {
 
     const validatePass = (value) => {
         if (validator.isStrongPassword(value, {
-        minLength: 8, minLowercase: 1,
-        minUppercase: 1, minNumbers: 1, minSymbols: 1
-      }) && validator.isLength(value, {
-        min: 8, max: 16,
-      })) {
-        setErrorPassMsg('')
-      } else {
-        setErrorPassMsg('A jelszó 8-16 karakter közti hosszúságú kell legyen, minimum egy kicsi és egy nagy betűt, egy számot és szimbólumot kell tartalmaznia.')
-      }
+            minLength: 8, minLowercase: 1,
+            minUppercase: 1, minNumbers: 1, minSymbols: 1
+        }) && validator.isLength(value, {
+            min: 8, max: 16,
+        })) {
+            setErrorPassMsg('')
+            Toggle()
+        } else {
+            setErrorPassMsg('A jelszó 8-16 karakter közti hosszúságú kell legyen, minimum egy kicsi és egy nagy betűt, egy számot és szimbólumot kell tartalmaznia.')
+        }
+    }
+
+    function Toggle() {
+        setToggleRegBtn(false)
     }
 
     function FajDisplay() { 
@@ -72,7 +79,7 @@ export default function Register() {
                         color: 'red',
                 }}>{errorEmailMsg}</span>}
             <label htmlFor="password" className={styles.dist}>Jelszó</label>
-            <input type="password" name="password" onChange={(e) => validatePass(e.target.value)} />
+            <input type="password" name="password" onChange={(e) => validatePass(e.target.value)}/>
             {errorPassMsg === '' ? null :
                 <span style={{
                         fontWeight: 'thin',
@@ -115,7 +122,7 @@ export default function Register() {
             </div>
             
             <div className={styles.button}>
-                <button>Regisztrálok</button>
+                <button disabled={toggleRegBtn}>Regisztrálok</button>
             </div>
         </div>
         </form>
