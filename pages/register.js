@@ -2,7 +2,7 @@ import styles from '../styles/Register.module.css'
 import Image from 'next/image'
 import { useState } from 'react'
 import validator from 'validator'
-import { fajok } from '../public/fajok/fajok'
+//import { fajok } from '../public/fajok/fajok'
 
 export default function Register() {
 
@@ -29,7 +29,7 @@ export default function Register() {
     }
 
     const validateEmail = (value) => {
-        if (validator.isEmail(value, {
+        if (!validator.isEmpty(value) && validator.isEmail(value, {
             allow_display_name: true, require_display_name: false, allow_utf8_local_part: true, 
             require_tld: true, allow_ip_domain: false, domain_specific_validation: false, 
             blacklisted_chars: '', host_blacklist: []
@@ -58,10 +58,6 @@ export default function Register() {
         }
     }
 
-    function FajDisplay() { 
-        return ((e) => setValue(e.target.value))
-    }
-
     return (
     <>
         <form id="form">
@@ -88,7 +84,7 @@ export default function Register() {
                         color: 'red',
                 }}>{errorPassMsg}</span>}
             <label htmlFor="faj" className={styles.dist}>Faj</label>
-            <select name="faj" onChange={FajDisplay()}>
+            <select name="faj" onChange={(e) => setValue(e.target.value)}>
                     <option value="bat" >Denevérek</option>
                     <option value="dunefolk" >Dűnék-népe</option>
                     <option value="human" >Emberek</option>

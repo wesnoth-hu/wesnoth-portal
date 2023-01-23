@@ -13,6 +13,18 @@ export default {
             rows: 1
         },
         {
+            name: 'email',
+            type: 'string',
+            title: 'Emailcím',
+            rows: 1
+        },
+        {
+            name: 'password',
+            type: 'string',
+            title: 'Jelszó',
+            rows: 1
+        },
+        {
             title: 'Kiválasztott Egység',
             name: 'unitselect',
             type: 'string',
@@ -20,8 +32,12 @@ export default {
                 list: [
                     ...unitSelect
                 ]
-            },
-            readonly: false
+            }
+        },
+        {
+            name: 'upload',
+            type: 'image',
+            title: 'Kép',
         }
     ]
 }
