@@ -1,7 +1,8 @@
 import styles from '../styles/Register.module.css'
-import Image from 'next/image';
+import Image from 'next/image'
 import { useState } from 'react'
 import validator from 'validator'
+import { fajok } from '../public/fajok/fajok'
 
 export default function Register() {
 
@@ -22,7 +23,7 @@ export default function Register() {
           })) {
             setErrorUserMsg('')
         } else {
-            setErrorUserMsg('A felhasználónév nem lehet üres, 3-16 karakter közti hosszúságú kell legyen és csak betűket meg számokat tartalmazhat.')
+            setErrorUserMsg('A felhasználónév nem lehet üres, 3-16 karakter közti hosszúságú kell legyen és csak betűket meg/vagy számokat tartalmazhat.')
             setToggleRegBtn(true)
         }
     }
@@ -128,5 +129,5 @@ export default function Register() {
         </div>
         </form>
     </>
-    )
+    ) 
 }
