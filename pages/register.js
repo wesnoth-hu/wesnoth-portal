@@ -71,7 +71,7 @@ export default function Register() {
             {
               headers: {
                 "content-type": "application/json",
-                Authorization: `Bearer sk3u94lSMGMa8xlhCuBFFiHWI0WpHK32w6XkS218L9oYy6lP8Mt4Q36YSFZiVGfjhFink9lIlqtI0DlwVbDtrjXyNWb8JRj0VN44xaKj2g6fKVaVdChAi6YdDodA2sGYR4Em4GFt0d26OexhA9ouQuJ4uCJUpztzAnZZdeD0FRF6WmlZ7RSs`,
+                Authorization: `Bearer `,
               },
               body: JSON.stringify(mutations),
               method: "POST",
