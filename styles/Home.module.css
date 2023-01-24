@@ -40,3 +40,9 @@
 .listS {
   margin: 0px 10px 0px 0px;
 }
+
+@media screen and (max-width: 880px) {
+  .center {
+    overflow-x: scroll;
+  }
+}

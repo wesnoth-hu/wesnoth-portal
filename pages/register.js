@@ -5,6 +5,14 @@ import validator from 'validator'
 
 export default function Register() {
 
+    // username input value
+    var [usernameInput, setUsernameInput] = useState("");
+    // email input value
+    var [emailInput, setEmailInput] = useState("");
+    // password input value
+    var [passwordInput, setPasswordInput] = useState("");
+    // select input
+    var [selectInput,setSelectInput] = useState("");
     // username validator
     const [errorUserMsg, setErrorUserMsg] = useState('');
     // email validator
@@ -57,40 +65,68 @@ export default function Register() {
         }
     }
 
+    async function register(mutations) {
+        const result = await fetch(
+            `https://x23r8kwf.api.sanity.io/v2023-01-01/data/mutate/development`,
+            {
+              headers: {
+                "content-type": "application/json",
+                Authorization: `Bearer sk3u94lSMGMa8xlhCuBFFiHWI0WpHK32w6XkS218L9oYy6lP8Mt4Q36YSFZiVGfjhFink9lIlqtI0DlwVbDtrjXyNWb8JRj0VN44xaKj2g6fKVaVdChAi6YdDodA2sGYR4Em4GFt0d26OexhA9ouQuJ4uCJUpztzAnZZdeD0FRF6WmlZ7RSs`,
+              },
+              body: JSON.stringify(mutations),
+              method: "POST",
+            }
+          );
+          return result;
+    }
+    
+    const mutations = {
+        mutations: [
+          {
+            create: {
+                "_id": `${usernameInput}`, 
+                "_type": "register", 
+                "title": `${usernameInput}`,
+                
+            }
+          }
+        ],
+      };
+
     return (
     <>
         <form id="form">
         <div className={styles.register}>
             <label htmlFor="username">Felhasználónév</label>
-            <input type="text" name="username" onChange={(e) => validateUser(e.target.value)} />
+            <input type="text" name="username" onChange={(u) => {validateUser(u.target.value); (un) => {un = usernameInput; setUsernameInput(usernameInput)}}} />
             {errorUserMsg === '' ? null : 
                 <span style={{
                     fontWeight: 'thin',
                     color: 'red',
                 }}>{errorUserMsg}</span>}
             <label htmlFor="email" className={styles.dist}>Email</label>
-            <input type="email" name="email" onChange={(e) => validateEmail(e.target.value)}/>
+            <input type="email" name="email" onChange={(e) => {validateEmail(e.target.value); (em) => {em = emailInput; setEmailInput(emailInput)}}} />
             {errorEmailMsg === '' ? null : 
                 <span style={{
                         fontWeight: 'thin', 
                         color: 'red',
                 }}>{errorEmailMsg}</span>}
             <label htmlFor="password" className={styles.dist}>Jelszó</label>
-            <input type="password" name="password" onChange={(e) => validatePass(e.target.value)}/>
+            <input type="password" name="password" onChange={(p) => {validatePass(p.target.value); (pw) => {pw = passwordInput; setPasswordInput(passwordInput)}}} />
             {errorPassMsg === '' ? null :
                 <span style={{
                         fontWeight: 'thin',
                         color: 'red',
                 }}>{errorPassMsg}</span>}
             <label htmlFor="faj" className={styles.dist}>Faj</label>
-            <select name="faj" onChange={(e) => setValue(e.target.value)}>
+            <select name="faj" onChange={(e) => {setValue(e.target.value); (sel) => {sel = selectInput; setSelectInput(selectInput)}}}>
                     <option value="bat" >Denevérek</option>
                     <option value="dunefolk" >Dűnék-népe</option>
                     <option value="human" >Emberek</option>
                     <option value="undead" >Élőholtak</option>
                     <option value="wose" >Fapásztorok</option>
                     <option value="wolf" >Farkasok</option>
-                    <option value="gryphon" >Griffek</option>
+                    <option value="gryphon">Griffek</option>
                     <option value="saurian" >Gyíkok</option>
                     <option value="goblin" >Koboldok</option>
                     <option value="horse" >Lovak</option>
@@ -119,10 +155,11 @@ export default function Register() {
             </div>
             
             <div className={styles.button}>
-                <button disabled={toggleRegBtn}>Regisztrálok</button>
+                <button disabled={toggleRegBtn} onClick={() => {register(mutations)}}>Regisztrálok</button>
             </div>
         </div>
         </form>
     </>
     ) 
 }
+
