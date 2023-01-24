@@ -2,7 +2,6 @@ import styles from '../styles/Register.module.css'
 import Image from 'next/image'
 import { useState } from 'react'
 import validator from 'validator'
-//import { fajok } from '../public/fajok/fajok'
 
 export default function Register() {
 

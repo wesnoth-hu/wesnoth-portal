@@ -5,7 +5,7 @@ export default [
     {title: 'Emberek (Human)', value: 'human'},
     {title: 'Élőholtak (Undead)', value: 'undead'},
     {title: 'Fapásztorok (Wose)', value: 'wose'},
-    {title: 'Farkasok (Direwolf)', value: 'direwolf'},
+    {title: 'Farkasok (Wolf)', value: 'wolf'},
     {title: 'Griffek (Gryphon)', value: 'gryphon'},
     {title: 'Gyíkok (Saurian)', value: 'saurian'},
     {title: 'Koboldok (Goblin)', value: 'goblin'},
