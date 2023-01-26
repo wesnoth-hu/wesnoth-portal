@@ -67,31 +67,36 @@ export default function Register() {
 
     async function register(mutations) {
         const result = await fetch(
-            `https://x23r8kwf.api.sanity.io/v2023-01-01/data/mutate/development`,
+            'https://x23r8kwf.api.sanity.io/v2023-01-01/data/mutate/development',
             {
+              method: "POST",
               headers: {
                 "content-type": "application/json",
-                Authorization: `Bearer `,
+                Authorization: `Bearer skPlditEIf4u9rXtrgtS4UFundgkZhdbx1lrdqn5Ns4gj95vKa1DKK26bf2tt7fBiS54qOFb9c3ax4MVAREKQJTntyAQvTXYL1rASzc3wAIkJrRhD1WMBx3H5AcoqA6wRxloFIsfOOnxSTIamwoaDcA7ozbxgFrNhsVIJ5lFRdekW4M9XbYC`,
               },
               body: JSON.stringify(mutations),
-              method: "POST",
             }
-          );
+          )
+          .then(data => data.json())
+          .then(err => console.log(err))
+          ;
           return result;
     }
     
     const mutations = {
         mutations: [
           {
-            create: {
+            createIfNotExists: {
                 "_id": `${usernameInput}`, 
-                "_type": "register", 
+                "_type": 'register', 
                 "title": `${usernameInput}`,
                 
             }
           }
         ],
       };
+
+      console.log(usernameInput,emailInput,passwordInput,selectInput)
 
     return (
     <>
