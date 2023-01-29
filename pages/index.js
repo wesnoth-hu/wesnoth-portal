@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 //import Register from './register'
 
 
@@ -14,94 +14,86 @@ export default function App({statical,logo}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <div className={styles.center}>
+        <main>
             <div className={styles.logo}>
               <Image
                 src={logo}
                 alt="Logo"
-                className={styles.logo}
-                width={880}
-                height={201}
+                width={415}
+                height={189}
                 priority
               />
             </div>
-              <div className={styles.list}>
-                <ul className={styles.listUl}>
-                  <li className={styles.listLi}>
-                    <a 
-                      href="https://discord.gg/a9YHdtq"
-                      target="_blank"
-                      className={styles.listA}
-                      rel="noopener noreferrer"
-                    >
-                      <Image 
-                        src={statical[0]["url"]}
-                        alt='Discord Logo'
-                        className={styles.listS}
-                        width={17}
-                        height={17}
-                        priority
-                      /> 
-                     Csatlakozz Discordon
-                    </a>
-                  </li>
-                  <li className={styles.listLi}>
-                    <a 
-                      href="https://www.facebook.com/MagyarWesnothKozosseg"
-                      target="_blank"
-                      className={styles.listA}
-                      rel="noopener noreferrer"
-                    >
-                      <Image 
-                        src={statical[1]["url"]}
-                        alt='Facebook Logo'
-                        className={styles.listS}
-                        width={17}
-                        height={17}
-                        priority
-                      /> 
-                     Csatlakozz Facebookon
-                    </a>
-                  </li>
-                  <li className={styles.listLi}>
-                    <a 
-                      href="https://wesnoth.itch.io/battle-for-wesnoth"
-                      target="_blank"
-                      className={styles.listA}
-                      rel="noopener noreferrer"
-                    >
-                      <Image 
-                        src={statical[2]["url"]}
-                        alt='Itch.io Logo'
-                        className={styles.listS}
-                        width={17}
-                        height={17}
-                        priority
-                      /> 
-                     Itch.io Letöltés
-                    </a>
-                  </li>
-                  <li className={styles.listLi}>
-                    <a 
-                      href="https://store.steampowered.com/app/599390/Battle_for_Wesnoth/"
-                      target="_blank"
-                      className={styles.listA}
-                      rel="noopener noreferrer"
-                    >
-                      <Image
-                        src={statical[3]["url"]}
-                        alt='Steam Logo'
-                        className={styles.listS}
-                        width={17}
-                        height={17}
-                        priority
-                      /> 
-                     Steam Letöltés
-                    </a>
-                  </li>
-                </ul>
-              </div>
-        </div>
+
+            <div className={styles.list}>
+              <ul>
+                <li>
+                  <a
+                    href="https://discord.gg/a9YHdtq"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={statical[0]["url"]}
+                      alt='Discord Logo'
+                      width={17}
+                      height={17}
+                      priority
+                    />
+                   Csatlakozz Discordon
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/MagyarWesnothKozosseg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={statical[1]["url"]}
+                      alt='Facebook Logo'
+                      width={17}
+                      height={17}
+                      priority
+                    />
+                   Csatlakozz Facebookon
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wesnoth.itch.io/battle-for-wesnoth"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={statical[2]["url"]}
+                      alt='Itch.io Logo'
+                      width={17}
+                      height={17}
+                      priority
+                    />
+                   Itch.io Letöltés
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://store.steampowered.com/app/599390/Battle_for_Wesnoth/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={statical[3]["url"]}
+                      alt='Steam Logo'
+                      width={17}
+                      height={17}
+                      priority
+                    />
+                   Steam Letöltés
+                  </a>
+                </li>
+              </ul>
+            </div>
+        </main>
         {/* <Register /> */}
       </>
   )
