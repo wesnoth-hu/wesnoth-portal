@@ -14,6 +14,11 @@
 @import "../node_modules/bootstrap/scss/grid";
 @import "../node_modules/bootstrap/scss/utilities";
 
+.main {
+  margin:auto;
+  padding: 0;
+}
+
 .logo {
   @include make-col(12);
   min-height: 40vh;
@@ -21,8 +26,9 @@
 }
 
 .logo img {
-  margin: 20vh auto auto;
+  margin: 20vh auto;
   max-width: 100%;
+  height: auto;
 }
 
 .list {

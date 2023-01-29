@@ -14,8 +14,8 @@ export default function App({statical,logo}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <main>
-            <div className={styles.logo}>
+        <main className={styles.main}>
+          <div className={styles.logo}>
               <Image
                 src={logo}
                 alt="Logo"
@@ -23,9 +23,8 @@ export default function App({statical,logo}) {
                 height={189}
                 priority
               />
-            </div>
-
-            <div className={styles.list}>
+          </div>
+          <div className={styles.list}>
               <ul>
                 <li>
                   <a
