@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/register.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/register.js", "schemas/imageSelect.jsx"],
   "exclude": ["node_modules"]
 }
