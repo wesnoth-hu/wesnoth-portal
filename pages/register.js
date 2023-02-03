@@ -2,6 +2,7 @@ import styles from '../styles/Register.module.css'
 import Image from 'next/image'
 import { useState } from 'react'
 import validator from 'validator'
+import client from '../client'
 
 export default function Register() {
 
@@ -65,30 +66,29 @@ export default function Register() {
         }
     }
 
-    async function register(mutations) {
+    async function Mutate(mutations) {
         const result = await fetch(
-            'https://x23r8kwf.api.sanity.io/v2023-01-01/data/mutate/development',
+            `https://${projectId}.api.sanity.io/v2021-10-21/data/mutate/${dataset}`,
             {
               method: "POST",
               headers: {
-                "content-type": "application/json",
-                Authorization: `Bearer skPlditEIf4u9rXtrgtS4UFundgkZhdbx1lrdqn5Ns4gj95vKa1DKK26bf2tt7fBiS54qOFb9c3ax4MVAREKQJTntyAQvTXYL1rASzc3wAIkJrRhD1WMBx3H5AcoqA6wRxloFIsfOOnxSTIamwoaDcA7ozbxgFrNhsVIJ5lFRdekW4M9XbYC`,
+                "Content-type": "application/json",
+                Authorization: `Bearer ${token}`,
               },
-              body: JSON.stringify(mutations),
+              body: JSON.stringify({mutations}),
             }
           )
           .then(data => data.json())
-          .then(err => console.log(err))
-          ;
+          .catch(err => console.log(err))
           return result;
     }
     
     const mutations = {
         mutations: [
           {
-            createIfNotExists: {
+            create: {
                 "_id": `${usernameInput}`, 
-                "_type": 'register', 
+                "_type": "register", 
                 "title": `${usernameInput}`,
                 
             }
@@ -103,28 +103,28 @@ export default function Register() {
         <form id="form">
         <div className={styles.register}>
             <label htmlFor="username">Felhasználónév</label>
-            <input type="text" name="username" onChange={(u) => {validateUser(u.target.value); (un) => {un = usernameInput; setUsernameInput(usernameInput)}}} />
+            <input type="text" name="username" onChange={(u) => {validateUser(u.target.value)}} onBlur={(un) => {setUsernameInput(un.target.value)}} />
             {errorUserMsg === '' ? null : 
                 <span style={{
                     fontWeight: 'thin',
                     color: 'red',
                 }}>{errorUserMsg}</span>}
             <label htmlFor="email" className={styles.dist}>Email</label>
-            <input type="email" name="email" onChange={(e) => {validateEmail(e.target.value); (em) => {em = emailInput; setEmailInput(emailInput)}}} />
+            <input type="email" name="email" onChange={(e) => {validateEmail(e.target.value)}} onBlur={(em) => {setEmailInput(em.target.value)}} />
             {errorEmailMsg === '' ? null : 
                 <span style={{
                         fontWeight: 'thin', 
                         color: 'red',
                 }}>{errorEmailMsg}</span>}
             <label htmlFor="password" className={styles.dist}>Jelszó</label>
-            <input type="password" name="password" onChange={(p) => {validatePass(p.target.value); (pw) => {pw = passwordInput; setPasswordInput(passwordInput)}}} />
+            <input type="password" name="password" onChange={(p) => {validatePass(p.target.value)}} onBlur={(pw) => {setPasswordInput(pw.target.value)}} />
             {errorPassMsg === '' ? null :
                 <span style={{
                         fontWeight: 'thin',
                         color: 'red',
                 }}>{errorPassMsg}</span>}
             <label htmlFor="faj" className={styles.dist}>Faj</label>
-            <select name="faj" onChange={(e) => {setValue(e.target.value); (sel) => {sel = selectInput; setSelectInput(selectInput)}}}>
+            <select name="faj" onChange={(e) => {setValue(e.target.value)}} onClick={(sel) => {setSelectInput(sel.target.value)}}>
                     <option value="bat" >Denevérek</option>
                     <option value="dunefolk" >Dűnék-népe</option>
                     <option value="human" >Emberek</option>
@@ -160,7 +160,7 @@ export default function Register() {
             </div>
             
             <div className={styles.button}>
-                <button disabled={toggleRegBtn} onClick={() => {register(mutations)}}>Regisztrálok</button>
+                <button disabled={toggleRegBtn} onClick={() => {Mutate(mutations)}}>Regisztrálok</button>
             </div>
         </div>
         </form>
